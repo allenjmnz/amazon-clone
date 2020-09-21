@@ -1,0 +1,136 @@
+.header {
+  background-color: #131921;
+  height: 60px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.header__desktop {
+  display: block;
+}
+
+.header__mobile {
+  display: none;
+}
+
+.header__logo {
+  height: 40px;
+  margin-right: 1rem;
+  object-fit: contain;
+}
+
+.header__search {
+  display: flex;
+  flex: 1;
+}
+
+.header__searchInput {
+  font-size: 1rem;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  height: 2.5rem;
+  border: none;
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+}
+
+.header__searchIconWrapper {
+  padding: 0;
+  border: 0;
+  height: 2.5rem;
+  border-radius: 0 5px 5px 0;
+  background-color: #febd69;
+  pointer-events: all;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__searchIcon {
+  background-color: transparent;
+  width: 3rem !important;
+  border-radius: 0 5px 5px 0;
+  pointer-events: none;
+}
+
+.header__searchIconWrapper:hover {
+  background-color: #f3a847;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header__link {
+  color: white;
+  text-decoration: none;
+}
+
+.header__option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.header__optionLineOne {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.header__optionLineTwo {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.header__optionBasket {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  height: 100%;
+}
+
+.header__optionShoppingIcon {
+  font-size: 1.8rem !important;
+}
+
+.header__basketCount {
+  font-size: 1.25rem;
+  margin-left: 0.125rem;
+  color: #f08804;
+}
+
+@media (max-width: 585px) {
+  .header {
+    position: static;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+  }
+
+  .header__desktop {
+    display: none;
+  }
+
+  .header__mobile {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .header__mobile :nth-child(2) {
+    margin-left: auto;
+  }
+
+  .header__search {
+    width: 100%;
+    margin: 0.5rem 0 0.25rem;
+  }
+}

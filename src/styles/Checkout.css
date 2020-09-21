@@ -1,0 +1,49 @@
+.checkout {
+  padding: 1rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout__desktop {
+  display: block;
+}
+
+.checkout__mobile {
+  display: none;
+}
+
+.checkout__wrapper {
+  display: flex;
+}
+
+.checkout__ad {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.checkout__title {
+  margin-bottom: 1rem;
+}
+
+.checkout__title + p {
+  font-weight: 500;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  .checkout__desktop {
+    display: none;
+  }
+
+  .checkout__mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 585px) {
+  .checkout__wrapper {
+    flex-direction: column-reverse;
+  }
+}

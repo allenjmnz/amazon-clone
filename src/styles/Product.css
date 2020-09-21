@@ -1,0 +1,53 @@
+.product {
+  background-color: white;
+  margin: 0.5rem;
+  padding: 1rem;
+  flex-basis: 300px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__price {
+  margin-top: 0.3125rem;
+  margin-bottom: 0.125rem;
+}
+
+.product__rating {
+  margin-bottom: auto;
+}
+
+.product__rating > svg {
+  margin: 0 -0.0625rem;
+}
+
+.product__rating > svg > path {
+  fill: rgb(235, 192, 0);
+}
+
+.product__highlightedStar > path:first-child {
+  opacity: 1;
+}
+
+.product__dimmedStar > path:first-child {
+  opacity: 0.1;
+}
+
+.product__qtyUpdater {
+  display: flex;
+  margin: 1.5rem auto 0.1875rem;
+}
+
+.product > img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-top: 1rem;
+}
+
+@media (min-width: 936px) {
+  .product:nth-child(5n + 4),
+  .product:nth-child(5n) {
+    flex-basis: 40%;
+  }
+}

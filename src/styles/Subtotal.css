@@ -1,0 +1,38 @@
+.subtotal {
+  position: sticky;
+  top: 76px;
+  width: 280px;
+  max-width: 100%;
+  background-color: white;
+  padding: 1.5rem;
+  margin-left: 1rem;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.subtotal__title + p:not(strong) {
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.subtotal__gift {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.subtotal__gift > input {
+  margin-right: 0.3rem;
+}
+
+.subtotal > button {
+  width: 100%;
+}
+
+@media (max-width: 585px) {
+  .subtotal {
+    position: static;
+    margin: 0 0 1rem;
+    width: 100%;
+  }
+}
