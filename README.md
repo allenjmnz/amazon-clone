@@ -20,5 +20,5 @@ Live version: https://clone-4m4z0n.web.app/
 
 - Clone or download project.
 - Open terminal inside the project folder.
-- Type `yarn add` to install node_modules.
+- Type `yarn install` to install node_modules.
 - Type `yarn start` to start development server.
