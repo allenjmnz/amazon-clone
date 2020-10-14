@@ -10,9 +10,9 @@ function Product({ id, title, image, rating, price }) {
   const [{ cart }, dispatch] = useStateValue();
 
   useEffect(() => {
-    const options = { style: 'currency', currency: 'MXN' };
-    const mexicanPesosFormat = new Intl.NumberFormat('es-MX', options);
-    setFormattedPrice(mexicanPesosFormat.format(price));
+    const options = { style: 'currency', currency: 'USD' };
+    const usdFormat = new Intl.NumberFormat('en-US', options);
+    setFormattedPrice(usdFormat.format(price));
   }, [price]);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/Login.css';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { auth } from '../firebase';
@@ -7,23 +7,27 @@ import { useStateValue } from '../StateProvider';
 function Login() {
   const history = useHistory();
   const location = useLocation();
+  const [, dispatch] = useStateValue();
   const { from } = location.state || { from: { pathname: '/' } };
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [{ user }] = useStateValue();
-
-  useEffect(() => {
-    if (user) {
-      history.replace(from);
-    }
-  }, [user, from, history]);
+  const [error, setError] = useState('');
+  const [processing, setProcessing] = useState(false);
 
   const login = e => {
     e.preventDefault();
+    setProcessing(true);
     auth
       .signInWithEmailAndPassword(email, password)
-      .then(() => history.replace(from))
-      .catch(e => alert(e.message));
+      .then(({ user }) => {
+        dispatch({ type: 'SET_USER', user: { ...user, firstName: user.displayName?.split(' ')[0] } });
+        setProcessing(false);
+        history.replace(from);
+      })
+      .catch(e => {
+        setError(e.message);
+        setProcessing(false);
+      });
   };
 
   return (
@@ -37,7 +41,7 @@ function Login() {
       </Link>
       <div className="login__container">
         <h2>Sign-In</h2>
-        <form className="login__form" onSubmit={login}>
+        <form className="login__form" onSubmit={login} onChange={() => setError('')}>
           <label htmlFor="email">E-mail</label>
           <input
             onChange={event => setEmail(event.target.value)}
@@ -56,7 +60,16 @@ function Login() {
             name="password"
             required
           />
-          <button className="general__btn" type="submit">
+          {error && (
+            <small style={{ color: 'red', fontWeight: '500', padding: '0.125rem 0.3rem' }}>
+              The email and/or password is incorrect.
+            </small>
+          )}
+          <button
+            className={`general__btn${!processing ? '' : ' general__disabled'}`}
+            type="submit"
+            disabled={processing}
+          >
             Sign In
           </button>
         </form>

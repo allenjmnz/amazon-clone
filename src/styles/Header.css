@@ -70,6 +70,7 @@
 .header__link {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .header__option {
@@ -125,6 +126,10 @@
     align-items: center;
   }
 
+  .header__mobile .header__logo {
+    margin-right: 1rem;
+  }
+
   .header__mobile :nth-child(2) {
     margin-left: auto;
   }
@@ -132,5 +137,16 @@
   .header__search {
     width: 100%;
     margin: 0.5rem 0 0.25rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .header__mobile .header__option,
+  .header__mobile .header__optionBasket {
+    margin-left: 0.5rem;
   }
 }

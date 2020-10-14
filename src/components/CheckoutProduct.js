@@ -4,16 +4,15 @@ import '../styles/CheckoutProduct.css';
 import { useStateValue } from '../StateProvider';
 import QuantityUpdater from './QuantityUpdater';
 
-function CheckoutProduct({ id, title, image, rating, price, quantity }) {
-  const [{ cart }, dispatch] = useStateValue();
-  console.log(cart);
+function CheckoutProduct({ id, title, image, rating, price, quantity, hideButton }) {
+  const [, dispatch] = useStateValue();
 
   const [formattedPrice, setFormattedPrice] = useState('');
 
   useEffect(() => {
-    const options = { style: 'currency', currency: 'MXN' };
-    const mexicanPesosFormat = new Intl.NumberFormat('es-MX', options);
-    setFormattedPrice(mexicanPesosFormat.format(price));
+    const options = { style: 'currency', currency: 'USD' };
+    const usdFormat = new Intl.NumberFormat('en-US', options);
+    setFormattedPrice(usdFormat.format(price));
   }, [price]);
 
   const removeFromCart = () => {
@@ -40,12 +39,14 @@ function CheckoutProduct({ id, title, image, rating, price, quantity }) {
               <StarTwoToneIcon key={i} className="checkoutProduct__dimmedStar" fontSize="small" />
             ))}
         </div>
-        <div className="checkoutProduct__qtyContainer">
-          <QuantityUpdater id={id} quantity={quantity} />
-          <button className="general__btn" onClick={removeFromCart}>
-            Remove from Cart
-          </button>
-        </div>
+        {!hideButton && (
+          <div className="checkoutProduct__qtyContainer">
+            <QuantityUpdater id={id} quantity={quantity} />
+            <button className="general__btn" onClick={removeFromCart}>
+              Remove from Cart
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -9,24 +9,30 @@ function CreateAccount() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [processing, setProcessing] = useState(false);
   const [, dispatch] = useStateValue();
 
   const register = e => {
     e.preventDefault();
+    setProcessing(true);
     auth
       .createUserWithEmailAndPassword(email, password)
-      .then(authUser => {
-        const user = auth.currentUser;
-        user.updateProfile({
-          displayName: name
-        });
-        return authUser;
+      .then(({ user }) => {
+        user
+          .updateProfile({
+            displayName: name
+          })
+          .then(() => {
+            dispatch({ type: 'SET_USER', user: { ...user, firstName: name.split(' ')[0] } });
+            setProcessing(false);
+            history.push('/');
+          });
       })
-      .then(authUser => {
-        dispatch({ type: 'SET_USER', user: { ...authUser.user, firstName: name.split(' ')[0] } });
-        history.push('/');
-      })
-      .catch(e => alert(e.message));
+      .catch(e => {
+        setProcessing(false);
+        setError(e.message);
+      });
   };
 
   return (
@@ -68,7 +74,12 @@ function CreateAccount() {
             name="password"
             required
           />
-          <button className="general__btn" type="submit">
+          {error && <small style={{ color: 'red', fontWeight: '500', padding: '0.125rem 0.3rem' }}>{error}</small>}
+          <button
+            className={`general__btn${!processing ? '' : ' general__disabled'}`}
+            type="submit"
+            disabled={processing}
+          >
             Create your Amazon Account
           </button>
         </form>

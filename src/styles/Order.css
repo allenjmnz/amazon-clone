@@ -1,0 +1,52 @@
+.order {
+  background-color: white;
+  position: relative;
+  padding: 2rem;
+  border: 1 solid lightgray;
+  margin: 1rem 0;
+}
+
+.order > .checkoutProduct {
+  box-shadow: none;
+  padding: 0.5rem 0;
+}
+
+.order .checkoutProduct__info {
+  justify-content: center;
+}
+
+.order .checkoutProduct__rating {
+  margin-bottom: 0;
+}
+
+.order__id {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.order__id h2 {
+  margin-right: 1rem;
+}
+
+.order__id small {
+  margin-top: 0.25rem;
+  color: gray;
+}
+
+.order__time {
+  margin-bottom: 1rem;
+}
+
+.order__total {
+  text-align: right;
+  font-size: 1.5rem;
+}
+
+.order__total > span {
+  font-weight: 500;
+  font-size: 0.7em;
+  color: dimgray;
+}

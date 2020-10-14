@@ -1,0 +1,124 @@
+.payment {
+  background-color: white;
+  padding: 1.25em;
+}
+
+.payment h1 {
+  margin-bottom: 1rem;
+}
+
+.payment .checkoutProduct {
+  box-shadow: none;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.payment .checkoutProduct__image {
+  max-width: auto;
+}
+
+.payment__section {
+  display: flex;
+  padding: 1.25em;
+  border-bottom: 1px solid lightgray;
+}
+
+.payment__section:last-child {
+  border-bottom: none;
+}
+
+.payment__title {
+  flex: 0.2;
+}
+
+.payment__address,
+.payment__items,
+.payment__details {
+  flex: 0.8;
+}
+
+.payment form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.payment form .general__btn {
+  margin-left: 0;
+  margin-top: 1rem;
+}
+
+.payment__cardElement {
+  margin-bottom: 0.5rem;
+}
+
+.payment__error {
+  font-size: 0.7rem;
+  color: #fa755a;
+}
+
+.payment__priceContainer {
+  margin-top: 1rem;
+}
+
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement .CardField-input-wrapper {
+  margin-bottom: 2px !important;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+@media (max-width: 585px) {
+  .payment__section {
+    flex-direction: column;
+  }
+
+  .payment__title {
+    margin-bottom: 1rem;
+  }
+
+  .payment__priceContainer {
+    color: dimgray;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .payment form .general__btn {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .payment h1 {
+    font-size: 1.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .payment__section {
+    padding: 20px 5px;
+  }
+}

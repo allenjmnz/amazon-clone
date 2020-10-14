@@ -7,14 +7,21 @@ export function getSubtotal(cart) {
   return cart.reduce((sum, item) => (sum += item.price * item.quantity), 0);
 }
 
-export function getQuantity(cart) {
-  return cart.reduce((amount, item) => (amount += item.quantity), 0);
-}
-
 export default function reducer(state, action) {
   let newCart, index, updatedItem;
 
   switch (action.type) {
+    case 'INITIAL_CART_LOADING':
+      const locallySavedCart = localStorage.getItem('cart');
+      if (locallySavedCart) {
+        newCart = JSON.parse(locallySavedCart);
+        return {
+          ...state,
+          cart: newCart
+        };
+      } else {
+        return state;
+      }
     case 'SET_USER':
       return {
         ...state,
@@ -36,6 +43,11 @@ export default function reducer(state, action) {
           cart: newCart
         };
       }
+    case 'EMPTY_CART':
+      return {
+        ...state,
+        cart: []
+      };
     case 'REMOVE_FROM_CART':
       newCart = [...state.cart];
       index = newCart.findIndex(item => item.id === action.item.id);
