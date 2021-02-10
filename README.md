@@ -6,7 +6,7 @@ Live version: https://clone-4m4z0n.web.app/
 
 ### **Version 1.1**
 
-- Stripe API Integration.
+- Stripe API Integration (use card 4242 4242 4242 4242 to test card payment process).
 - Database implementation to save users' orders. Users can see them in the **Orders page**.
 - Improved routing:
   - Users can't access **Checkout** or **Orders** pages without logging in.
